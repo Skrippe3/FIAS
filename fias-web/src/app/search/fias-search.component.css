@@ -1,0 +1,145 @@
+.search-panel {
+  background: #fff;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.row.main {
+  display: flex;
+  gap: 10px;
+}
+
+.query {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #cfd6dd;
+  border-radius: 8px;
+}
+
+.row.main button {
+  padding: 0 24px;
+  font-size: 16px;
+  color: #fff;
+  background: #1565c0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.row.main button:disabled {
+  background: #90a4ae;
+  cursor: default;
+}
+
+.row.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.row.filters label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #55606a;
+  gap: 4px;
+}
+
+.row.filters input,
+.row.filters select {
+  padding: 7px 9px;
+  border: 1px solid #cfd6dd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.row.filters label.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-end;
+  padding-bottom: 6px;
+}
+
+.results {
+  margin-top: 24px;
+}
+
+.summary {
+  font-weight: 600;
+  color: #37424c;
+}
+
+.hint {
+  color: #6b7680;
+}
+
+.error {
+  color: #c62828;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef1f4;
+  font-size: 14px;
+}
+
+th {
+  background: #f5f7f9;
+  color: #55606a;
+}
+
+tbody tr:hover {
+  background: #f8fbff;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.full-address {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #78848d;
+}
+
+.guid {
+  font-family: monospace;
+  font-size: 12px;
+  color: #78848d;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.pager button {
+  padding: 7px 14px;
+  border: 1px solid #cfd6dd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pager button:disabled {
+  color: #b0bac2;
+  cursor: default;
+}

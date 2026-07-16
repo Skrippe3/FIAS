@@ -1,0 +1,121 @@
+<section class="search-panel">
+  <form (ngSubmit)="submit()">
+    <div class="row main">
+      <input
+        type="text"
+        name="query"
+        class="query"
+        placeholder="Введите адрес: улица, город, регион…"
+        [(ngModel)]="request.query"
+        autocomplete="off"
+      />
+      <button type="submit" [disabled]="loading">Найти</button>
+    </div>
+
+    <div class="row filters">
+      <label>
+        Тип
+        <input
+          type="text"
+          name="typeName"
+          placeholder="ул, г, обл…"
+          [(ngModel)]="request.typeName"
+        />
+      </label>
+
+      <label>
+        Уровень
+        <input
+          type="number"
+          name="levelId"
+          min="1"
+          [(ngModel)]="request.levelId"
+        />
+      </label>
+
+      <label>
+        Регион
+        <input
+          type="text"
+          name="regionCode"
+          maxlength="2"
+          placeholder="77"
+          [(ngModel)]="request.regionCode"
+        />
+      </label>
+
+      <label class="checkbox">
+        <input
+          type="checkbox"
+          name="onlyActive"
+          [(ngModel)]="request.onlyActive"
+        />
+        Только актуальные
+      </label>
+
+      <label>
+        На странице
+        <select name="pageSize" [(ngModel)]="request.pageSize">
+          <option [ngValue]="20">20</option>
+          <option [ngValue]="50">50</option>
+          <option [ngValue]="100">100</option>
+        </select>
+      </label>
+    </div>
+  </form>
+</section>
+
+<section class="results">
+  <p *ngIf="loading" class="hint">Идёт поиск…</p>
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <ng-container *ngIf="searched && !loading && !error">
+    <p class="summary">Найдено: {{ total | number }}</p>
+
+    <p *ngIf="items.length === 0" class="hint">Ничего не найдено.</p>
+
+    <table *ngIf="items.length > 0">
+      <thead>
+        <tr>
+          <th>Адрес</th>
+          <th>Тип</th>
+          <th>Уровень</th>
+          <th>Регион</th>
+          <th>GUID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>
+            <div class="name">{{ item.fullName }}</div>
+            <div class="full-address" *ngIf="item.fullAddress">
+              {{ item.fullAddress }}
+            </div>
+          </td>
+          <td>{{ item.typeName }}</td>
+          <td>{{ item.levelId }}</td>
+          <td>{{ item.regionCode }}</td>
+          <td class="guid">{{ item.objectGuid }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pager" *ngIf="items.length > 0 && totalPages > 1">
+      <button
+        type="button"
+        (click)="goToPage(request.page - 1)"
+        [disabled]="request.page <= 1"
+      >
+        ← Назад
+      </button>
+      <span>Страница {{ request.page }} из {{ totalPages }}</span>
+      <button
+        type="button"
+        (click)="goToPage(request.page + 1)"
+        [disabled]="request.page >= totalPages"
+      >
+        Вперёд →
+      </button>
+    </div>
+  </ng-container>
+</section>

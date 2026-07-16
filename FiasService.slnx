@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Fias.Api/Fias.Api.csproj" />
+  <Project Path="Fias.Application/Fias.Application.csproj" />
+  <Project Path="Fias.Domain/Fias.Domain.csproj" />
+  <Project Path="Fias.Infrastructure/Fias.Infrastructure.csproj" />
+  <Project Path="Fias.Worker/Fias.Worker.csproj" />
+</Solution>
